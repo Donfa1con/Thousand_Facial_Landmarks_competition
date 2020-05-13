@@ -40,4 +40,4 @@ stages:
         accumulation_steps: 3
       saver:
         callback: CheckpointCallback
-        resume: "./checkpoints/best_full.pth"
+        resume: "./logs/checkpoints/best_full.pth"

@@ -21,6 +21,6 @@ stages:
       callback: KeypointsInferCallback
       subm_file: "../data_resized/sampleSubmission.csv"
       test_points_csv: "../data_resized/test_points.csv"
-      out_file: "subs_1.csv"
+      out_file: "subs/subs_1.csv"
 
   infer: {}
