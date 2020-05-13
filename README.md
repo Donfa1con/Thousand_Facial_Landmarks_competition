@@ -24,3 +24,20 @@ PrivateLB: 9.27547 (37 место)**
 ```python3 mean_subs.py```<br>
 **PublicLB: 8.42125<br>
 PrivateLB: 8.67260 (7 место)**
+![Лучший скор](images/best_score.png?raw=true "Лучший скор")
+
+## Дополнительное описание
+- Датасет был ресайзнут в 180x250. На таком же разрешении училась модель
+- Аугментации из albumentations + свой HorizontalFlip(p=0.5)<br>
+```
+A.Compose([
+    A.MotionBlur(p=0.2),
+    A.OneOf([A.HueSaturationValue(p=0.5),
+             A.RGBShift(p=0.5)], p=1),
+    A.RandomBrightnessContrast(p=0.5),
+    A.Normalize(),
+    ToTensor()
+])
+```
+- Использовал L2 loss как среднюю сумму дистанций между соответствующими точками
+- Модель resnet50(pretrained=True) из torchvision
