@@ -12,13 +12,13 @@
 ```catalyst-dl run --config=configs/train_1.yaml``` - resnet50, 14 epoch, batch_size 50, valid_size 0.2 <br>
 ```catalyst-dl run --config=configs/infer_1.yaml``` - создаем сабмит из лучшей модели. <br>
 **PublicLB: 8.92621 <br>
-PrivateLB: 8.68758 (21 место)**
+PrivateLB: 8.68758 (13 место)**
 
 - Дообучаем: <br>
 ```catalyst-dl run --config=configs/train_2.yaml``` - resnet50, 4 epoch, batch_size 50*3, valid_size 0.05 <br>
 ```catalyst-dl run --config=configs/infer_2.yaml``` - создаем сабмит из последней модели. <br>
 **PublicLB: 9.27547 <br>
-PrivateLB: 8.99571 (37 место)**
+PrivateLB: 8.99571 (25 место)**
 
 - Усредняем 2 сабмита: <br>
 ```python3 mean_subs.py```<br>
