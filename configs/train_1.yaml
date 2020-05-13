@@ -1,0 +1,40 @@
+model_params:
+  model: KeyPointNet
+  arch: resnet50
+
+args:
+  expdir: src
+  logdir: logs
+  verbose: True
+  check: True
+
+stages:
+  data_params:
+    batch_size: 50
+    num_workers: 4
+    data_dir: "../data_resized"
+    valid_size: 0.2
+    loaders_params:
+      valid:
+        batch_size: 50
+
+  state_params:
+    num_epochs: 14
+    main_metric: 'mse'
+
+  criterion_params:
+    criterion: CustomL2Loss
+
+  optimizer_params:
+    optimizer: Adam
+    lr: 0.0005
+    weight_decay: 0.0005
+
+  stage1:
+    callbacks_params:
+      loss:
+        callback: CriterionCallback
+      optimizer:
+        callback: OptimizerCallback
+      saver:
+        callback: CheckpointCallback

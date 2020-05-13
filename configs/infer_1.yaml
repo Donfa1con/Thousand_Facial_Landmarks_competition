@@ -1,0 +1,26 @@
+model_params:
+  model: KeyPointNet
+  arch: resnet50
+
+args:
+  expdir: src
+  logdir: logs
+  verbose: True
+
+stages:
+  data_params:
+    batch_size: 50
+    num_workers: 4
+    data_dir: "../data_resized"
+
+  callbacks_params:
+    loader:
+      callback: CheckpointCallback
+      resume: "./logs/checkpoints/best.pth"
+    infer:
+      callback: KeypointsInferCallback
+      subm_file: "../data_resized/sampleSubmission.csv"
+      test_points_csv: "../data_resized/test_points.csv"
+      out_file: "subs_1.csv"
+
+  infer: {}
