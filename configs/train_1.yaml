@@ -6,7 +6,7 @@ args:
   expdir: src
   logdir: logs
   verbose: True
-  check: True
+#  check: True
 
 stages:
   data_params:
